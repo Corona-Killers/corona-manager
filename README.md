@@ -11,19 +11,32 @@ this challenge will test your back end skills. you are required to use express a
 * [Rest API](#Rest-API)
 
 ## Tasks
-- Create an express server that will communicate with the data base through some api
-- Build [Rest](#Rest-API) for each model in the data base
-- Pass all tests
+- Create an express server that will communicate with the data base through some api.
+- Build [Rest](#Rest-API) for each model in the data base.
+- Pass all tests.
+- Use the Sequelize Paranoid.
 
 ## Rest API
 ### GET Methods
-- GET all patients
-- GET all patients by symptom id
-- GET patient by id covid_19_challenge
-- GET patient by id
+- GET all patients.
+- GET all patients by symptom id.
+- GET patient by id covid 19 challenge.
+- GET patient by id.
 - 
 ### POST Methods
+- POST a new patient.
+- POST a new symptom.
+- POST a new symptom for patient id.
+- POST a new covid_test for patient id.
 
 ### PATCH Methods
+- PATCH a new patient.
+- PATCH a new symptom.
+- PATCH a new symptom for patient id.
+- PATCH a new covid_test for patient id.
 
 ### DELETE Methods
+- DELETE a patient.
+- DELETE a symptom of patient.
+
+## Good Luck!

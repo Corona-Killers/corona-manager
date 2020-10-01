@@ -38,7 +38,7 @@ this challenge will test your back end skills. you are required to use express a
 - Columns: id, patient_id, is_sick
 
 
-## Rest API
+## Rest API Requirements
 ### GET Methods
 - GET all patients.
 - GET all patients by symptom id.

@@ -25,3 +25,5 @@ this challenge will test your back end skills. you are required to use express a
 ### POST Methods
 
 ### PATCH Methods
+
+### DELETE Methods

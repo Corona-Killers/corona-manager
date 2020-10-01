@@ -16,6 +16,28 @@ this challenge will test your back end skills. you are required to use express a
 - Pass all tests.
 - Use the Sequelize Paranoid.
 
+## Database Requirements
+### Database
+- SQL only!
+- Use Sequelize
+- Database name has to be called - "covid_19"
+
+### Patients Table
+- Columns: id, name, symptom, city_id, status, hospital_id
+### Cities Table
+- Columns: id, name, population
+### Hospitals Table
+- Columns: id, name, respirator_amount
+### Patients Table
+- Columns: 
+### Symptompes_by_patiens Table
+- Columns: patient_id, symptom_id
+### Symptompes Table
+- Columns: id, name
+### Covid_test Table
+- Columns: id, patient_id, is_sick
+
+
 ## Rest API
 ### GET Methods
 - GET all patients.

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-////////// yoni
+
 app.use(express.json());
 
 const unknownEndpoint = (request, response) => {
@@ -14,6 +14,6 @@ app.get('/', (req, res) => {
 app.use('/api/', require('./api'));
 
 app.use(unknownEndpoint);
-////////////
+
 
 module.exports = app;

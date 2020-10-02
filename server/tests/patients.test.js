@@ -1,5 +1,9 @@
 const request = require("supertest");
 const app = require("../app");
+
+require('mysql2/node_modules/iconv-lite').encodingExists('foo');
+
+
 const {
   Patients,
   CovidTests,
@@ -8,7 +12,6 @@ const {
   Cities,
 } = require("../models");
 // const { patientsMock, covidTestMock, citiesMock, symptomMock, SymptomsByPatientsMock } = require('./mockData');
-
 const patientsMock = [
   {
     name: "patient1",
@@ -40,7 +43,7 @@ const patientsMock = [
   },
   {
     name: "patient5",
-    dateOfBitrth: "1989/01/30",
+    dateOfBitrth: "1989/02/25",
     cityId: 2,
     status: "isolation",
     hospitalId: 2,
@@ -128,77 +131,69 @@ const HospitalsMock = [
   },
 ];
 
+singlePatientMock = {
+  name: "patient1",
+  dateOfBirth: "2001/04/05",
+  cityId: 2,
+  status: "isolation",
+  hospitalId: 1,
+}
+
 describe("Patient api tests", () => {
 
-  // beforeAll(async () => {
-  //   console.log('process.env.NODE_ENV', process.env.NODE_ENV)
-  //   // await Patients.destroy({ truncate: true, force: true });
-  //   // await CovidTests.destroy({ truncate: true, force: true });
-  //   // await Symptoms.destroy({ truncate: true, force: true });
-  //   // await SymptomsByPatients.destroy({ truncate: true, force: true });
-  //   // await Cities.destroy({ truncate: true, force: true });
-  // });
-
-  // afterAll(async () => {
-  //  app.close()
-  // })
-
-  it("Can add new patients, cities, symptoms and covid tests", async () => {
-        const { body: aaa } = await request(app)
-        .get("/api/v1/patient")
-        .send({
-          name: "patient1",
-          dateOfBirth: "2001/04/05",
-          cityId: 2,
-          status: "isolation",
-          hospitalId: 1,
-        }).expect(200)
-
-        console.log(aaa);
-    // covidTestMock.forEach(
-    //   async (test) =>
-    //     await request(app).post("/api/v1/covidtests").send(test).expect(200)
-    // );
-    // citiesMock.forEach(
-    //   async (city) =>
-    //     await request(app).post("/api/v1/cities").send(city).expect(200)
-    // );
-    // symptomMock.forEach(
-    //   async (symptom) =>
-    //     await request(app).post("/api/v1/symptoms").send(symptom).expect(200)
-    // );
-    // SymptomsByPatientsMock.forEach(
-    //   async (symptomByPatient) =>
-    //     await request(app)
-    //       .post("/api/v1/symptomsByPatient")
-    //       .send(symptomByPatient).expect(200)
-    // );
+  beforeAll(async () => {
+    console.log('process.env.NODE_ENV', process.env.NODE_ENV)
+    await Patients.destroy({ truncate: true, force: true });
+    await CovidTests.destroy({ truncate: true, force: true });
+    await Symptoms.destroy({ truncate: true, force: true });
+    await SymptomsByPatients.destroy({ truncate: true, force: true });
+    await Cities.destroy({ truncate: true, force: true });
   });
 
-  // it("Can get all the Patients with their cities name, test results, and symptoms", async () => {
-  //   const { body } = await request(app).get("/api/v1/patients").expect(200);
-  //   expect(body.length).toBe(5);
-  // });
+  afterAll(async () => {
+   app.close()
+  })
 
-  //   it('Can get all the patients that their covid tests results are true', async () => {
-  //     const { body } = await request(app).get('/api/v1/patient/positive');
-  //     expect(body.length).toBe(3);
-  //   });
+  it("Can add new patients, cities, symptoms and covid tests", async () => {
+    
+    const patientsResult = await Patients.bulkCreate(patientsMock)
+    expect(patientsResult.length).toBe(5)
 
-  // it("Can get pateint by id with his city, test result and symptoms", async () => {
-  //   const { body } = await request(app).get("/api/v1/patient/1").expect(200);
-  //   console.log(body);
-  //   expect(body.City.name).toBe("Haifa");
-  //   expect(body.CovidTests.isSick).toBe(true);
-  //   expect(body.Symptoms.isSick).toBe(true);
-  //   expect(body.SymptomsByPatients[0].Symptom.name).toBe(
-  //     "Difficulty Breathing"
-  //   );
-  // });
+    const covidTestResult = await CovidTests.bulkCreate(covidTestMock)
+    expect(covidTestResult.length).toBe(5)
 
-  // it("Can delete a patient by id", async () => {
-  //   await request(app).delete("/api/v1/patient/1");
-  //   const { body } = await request(app).get("/api/v1/patient");
-  //   expect(body.length).toBe(4);
-  // });
+    const citiesResult = await Cities.bulkCreate(citiesMock)
+    expect(citiesResult.length).toBe(2)
+
+    const symptomsResult = await Symptoms.bulkCreate(symptomMock)
+    expect(symptomsResult.length).toBe(3)
+    
+    const symptomsByPatientsResult = await SymptomsByPatients.bulkCreate(SymptomsByPatientsMock)
+    expect(symptomsByPatientsResult.length).toBe(5)
+  
+  });
+
+  it("Can get all the Patients with their cities name, test results, and symptoms", async () => {
+    const { body } = await request(app).get("/api/v1/patients").expect(200);
+    expect(body.length).toBe(5);
+  });
+
+    it('Can get all the patients that their covid tests results are true', async () => {
+      const { body } = await request(app).get('/api/v1/patients/positive');
+      expect(body.length).toBe(3);
+    });
+
+  it("Can get pateint by id with his city, test result and symptoms", async () => {
+    const { body } = await request(app).get("/api/v1/patients/2").expect(200);
+    console.log(body);
+    expect(body.City.name).toBe("Tel-aviv");
+    expect(body.CovidTests[0].isSick).toBe(false);
+    expect(body.SymptomsByPatients[0].Symptom.name).toBe("Difficulty Breathing");
+  });
+
+  it("Can delete a patient by id", async () => {
+    await request(app).delete("/api/v1/patients/1");
+    const { body } = await request(app).get("/api/v1/patients");
+    expect(body.length).toBe(4);
+  });
 });

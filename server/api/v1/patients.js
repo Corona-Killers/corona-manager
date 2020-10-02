@@ -30,17 +30,37 @@ patientRouter.get("/", async (req, res, next) => {
     });
     res.json(allPatients);
   } catch (error) {
-    res.send({ error });
+    res.send(error);
   }
 });
+
+patientRouter.get("/positive", async (req, res, next) => {
+  try {
+    const positivePatients = await Patients.findAll({
+      include: [
+        {
+          model: CovidTests,
+          where: {
+            isSick: true,
+          },
+        },
+      ],
+    });
+    res.json(positivePatients);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 patientRouter.get("/:patientId", async (req, res, next) => {
   try {
     const patient = await Patients.findOne({
+      where: { id: req.params.patientId },
       include: [
         {
           model: SymptomsByPatients,
+          // attributes: ["id"],
           include: [{ model: Symptoms, attributes: ["name"] }],
-          attributes: ["id"],
         },
         {
           model: Cities,
@@ -50,7 +70,6 @@ patientRouter.get("/:patientId", async (req, res, next) => {
           model: CovidTests,
         },
       ],
-      where: { id: req.params.patientId },
     });
     res.json(patient);
   } catch (error) {
@@ -85,78 +104,6 @@ patientRouter.put("/:patientId", async (req, res, next) => {
     res.send({ error });
   }
 });
-
-patientRouter.delete("/:patientId", async (req, res, next) => {
-  try {
-    const patient = await Patients.findByPk(req.params.patientId);
-    await patient.destroy();
-    res.json({ deleted: true });
-  } catch (error) {
-    res.send({ error });
-  }
-});
-
-patientRouter.delete("/:patientId", async (req, res, next) => {
-  try {
-    const patient = await Patients.findByPk(req.params.patientId);
-    await patient.destroy();
-    res.json({ deleted: true });
-  } catch (error) {
-    res.send({ error });
-  }
-});
-
-patientRouter.delete("/:patientId", async (req, res, next) => {
-  try {
-    const patient = await Patients.findByPk(req.params.patientId);
-    await patient.destroy();
-    res.json({ deleted: true });
-  } catch (error) {
-    res.send({ error });
-  }
-});
-
-patientRouter.delete("/:patientId", async (req, res, next) => {
-  try {
-    const patient = await Patients.findByPk(req.params.patientId);
-    await patient.destroy();
-    res.json({ deleted: true });
-  } catch (error) {
-    res.send({ error });
-  }
-});
-
-patientRouter.delete("/:patientId", async (req, res, next) => {
-  try {
-    const patient = await Patients.findByPk(req.params.patientId);
-    await patient.destroy();
-    res.json({ deleted: true });
-  } catch (error) {
-    res.send({ error });
-  }
-});
-
-patientRouter.delete("/:patientId", async (req, res, next) => {
-  try {
-    const patient = await Patients.findByPk(req.params.patientId);
-    await patient.destroy();
-    res.json({ deleted: true });
-  } catch (error) {
-    res.send({ error });
-  }
-});
-
-patientRouter.delete("/:patientId", async (req, res, next) => {
-  try {
-    const patient = await Patients.findByPk(req.params.patientId);
-    await patient.destroy();
-    res.json({ deleted: true });
-  } catch (error) {
-    res.send({ error });
-  }
-});
-
-module.exports = patientRouter;
 
 patientRouter.delete("/:patientId", async (req, res, next) => {
   try {

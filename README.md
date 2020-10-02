@@ -2,7 +2,7 @@
 
 ## Welcome To The Challenge!
 We need your help to beat the covid pandemic !! \
-this challenge will test your back end skills. you are required to use express and sequelize to analyze data from the given data base.
+this challenge will test your Back-End skills. you are required to use express.js and sequelize to analyze data from the given data base.
 
 
 ## Table Of Contents
@@ -11,19 +11,23 @@ this challenge will test your back end skills. you are required to use express a
 * [Rest API](#Rest-API)
 
 ## Tasks
-- Create an express server that will communicate with the data base through some api.
+- Create an express server that will analyze details from the data base and display it to the client.
 - Build [Rest-API](#Rest-API) for each model in the data base.
-- Pass all tests.
-- Use the Sequelize Paranoid.
+- Pass all the tests.
+- Use the Sequelize Paranoid when patient recovered or dead.
+(first change their status and then delete them)
+- Use underscore in DB in all the models. In node it should perform in camelCase. 
+Hint: ("define": {"underscored": true})
 
-## Database Requirements
+
+## Database Requirements(the test checks that)
 ### Database
 - SQL only!
 - Use Sequelize
 - Database name has to be called - "covid_19"
 
 ### Patients Table
-- Columns: id, name, symptom, cityId, status('Respiratory', 'Insulation', 'waiting'), hospitalId.
+- Columns: id, dateOfBirth, cityId, name, symptom, status('sick', 'respiratory', 'recovered', 'dead', 'isolation'), hospitalId.
 ### Cities Table
 - Columns: id, name, population.
 ### Hospitals Table
@@ -36,25 +40,43 @@ this challenge will test your back end skills. you are required to use express a
 
 ## Rest API Requirements
 ### GET Methods
-- GET all patients.
-- GET all patients by symptom id.
+#### Patients
+- GET all patients with their city, symptoms, covid test and status. 
+- GET patient by id with their city, symptoms, covid test and status.
+#### Hospitals
+- GET all hospitals with their capacity (maxCapacity), number of respirator (respiratorAmount)
+- GET Hospital by id.
+- GET all the hospitals that need to bring more respirator machines (less than five machines that are available in the hospital).
+#### Cities
+- GET all cities number of sick people in every hospital in the city.
+- GET city by id.
+- GET the city with the most percent sick people.
+#### Symptoms
+- GET all symptoms.
+- GET symptom by id.
+#### Covid Tests
+- GET all covid Tests that are positive.
+- GET covid Test by patient.
+- GET covid The amount of covid test that became positive.
+
+- GET all patients by symptom.
 - GET patient by id covid 19 challenge.
-- GET patient by id.
 
 ### POST Methods
-- POST a new patient.
-- POST a new symptom.
-- POST a new symptom for patient id.
-- POST a new covid_test for patient id.
+- POST a new patient with new CovidTests and thier new symptom
+- POST a new symptom for patient.
 
-### PATCH Methods
-- PATCH a new patient.
-- PATCH a new symptom.
-- PATCH a new symptom for patient id.
-- PATCH a new covid_test for patient id.
+### PUT Methods
+- PUT a new patient.
+- PUT a new symptom.
+- PUT a new symptom for patient.
+- PUT a CovidTests for patient.
 
 ### DELETE Methods
 - DELETE a patient.
-- DELETE a symptom of patient.
+- DELETE a symptom.
+- DELETE a hospital.
+- DELETE a city.
+- DELETE a covid test.
 
 ## Good Luck!

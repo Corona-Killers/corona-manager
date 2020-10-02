@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('covid_tests', {
+    await queryInterface.createTable('symptomsByPatients', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,8 +11,8 @@ module.exports = {
       patient_id: {
         type: Sequelize.INTEGER
       },
-      is_sick: {
-        type: Sequelize.BOOLEAN
+      symptom_id: {
+        type: Sequelize.INTEGER
       },
       created_at: {
         allowNull: false,
@@ -25,6 +25,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('covid_tests');
+    await queryInterface.dropTable('symptomsByPatients');
   }
 };

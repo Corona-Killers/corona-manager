@@ -63,6 +63,16 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date(),
         deleted_at: null
+      },
+      {
+        name: 'Alon Tzukerman',
+        date_of_birth: new Date(1995, 4, 11),
+        city_id: 5,
+        status: 'dead',
+        hospital_id: 5,
+        created_at: new Date(),
+        updated_at: new Date(),
+        deleted_at: null
       }
     ]);
   },

@@ -46,6 +46,13 @@ module.exports = {
       max_capacity: 20,
       created_at: new Date(),
       updated_at: new Date(),
+    },
+    {
+      name: 'Soroka',
+      respirator_amount: 40,
+      max_capacity: 200,
+      created_at: new Date(),
+      updated_at: new Date(),
     }
    ]);
   },

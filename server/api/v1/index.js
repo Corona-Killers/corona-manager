@@ -11,4 +11,6 @@ index.use('/covidtests', require('./covidTests'));
 
 index.use('/symptoms', require('./symptoms'));
 
+index.use('/symptomsByPatient', require('./symptomsByPatient'));
+
 module.exports = index;

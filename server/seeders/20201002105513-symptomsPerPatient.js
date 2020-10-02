@@ -11,7 +11,7 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   await queryInterface.bulkInsert('symptomsByPatients', [
+   await queryInterface.bulkInsert('symptoms_by_patients', [
     {
       patient_id: 1,
       symptom_id: 1,

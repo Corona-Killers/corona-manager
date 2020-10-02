@@ -50,7 +50,7 @@ Hint: ("define": {"underscored": true})
 #### Cities
 - GET all cities number of sick people in every hospital in the city.
 - GET city by id.
-- GET the city with the most percent sick people.
+- GET the city with the most sick people (included every person that ever get sick).
 #### Symptoms
 - GET all symptoms.
 - GET symptom by id.

@@ -41,6 +41,34 @@ module.exports = {
       population: 100000,
       created_at: new Date(),
       updated_at: new Date(),
+    },
+    {
+      name: 'Rishon LeZion',
+      population: 100000,
+      created_at: new Date(),
+      updated_at: new Date(),
+    },
+    {
+      name: 'H'dera,
+      population: 100000,
+      created_at: new Date(),
+      updated_at: new Date(),
+    },
+    {
+      name: 'NGedera',
+      opulation: 100000,
+      created_at: new Date(),
+      updated_at: new Date(),
+    },
+    {
+      name: 'NSderot',      population: 100000,
+      created_at: new Date(),
+      updated_at: new Date(),
+    },
+    {
+      name:: NBe\'er Sheva',      population: 100000,
+      created_at: new Date(),
+      updated_at: new Date(),
     }
    ]);
   },

@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class hospitals extends Model {
+  class Hospitals extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -14,13 +14,15 @@ module.exports = (sequelize, DataTypes) => {
       this.hasMany(models.Patients, {foreignKey: 'hospitalId'});
     }
   };
-  hospitals.init({
+  Hospitals.init({
     name: DataTypes.STRING,
-    respiratorAmount: DataTypes.INTEGER,
-    maxCapacity: DataTypes.INTEGER
+    respiratorAmount: {type: DataTypes.INTEGER,
+    field: 'respirator_amount'},
+    maxCapacity: {type: DataTypes.INTEGER,
+    field: 'max_capacity'}
   }, {
     sequelize,
-    modelName: 'hospitals',
+    modelName: 'Hospitals',
   });
-  return hospitals;
+  return Hospitals;
 };

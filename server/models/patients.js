@@ -11,16 +11,25 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsToMany(model.symptoms, {through: 'symptopmsbypatient'});
+      this.belongsToMany(model.symptoms, {through: 'symptomsByPatients' , foreignKey: 'symptomId' , as: 'symptomList'});
+      this.belongsTo(models.cities, {foreignKey: 'cityId'});
+      this.hasMany(models.CovidTests, {foreignKey: 'patientId'});
     }
   };
   Patients.init({
     name: DataTypes.STRING,
-    cityId: DataTypes.INTEGER,
+    cityId: {
+      type: DataTypes.INTEGER,
+      field: city_id
+    },
     status: DataTypes.STRING,
-    hospitalId: DataTypes.INTEGER
+    hospitalId: {
+      type :DataTypes.INTEGER,
+      field: 'hospital_id'
+    }
   }, {
     sequelize,
+    paranoid: true,
     modelName: 'Patients',
   });
   return Patients;

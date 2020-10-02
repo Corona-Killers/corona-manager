@@ -12,7 +12,7 @@ this challenge will test your back end skills. you are required to use express a
 
 ## Tasks
 - Create an express server that will communicate with the data base through some api.
-- Build [Rest](#Rest-API) for each model in the data base.
+- Build [Rest-API](#Rest-API) for each model in the data base.
 - Pass all tests.
 - Use the Sequelize Paranoid.
 
@@ -23,19 +23,15 @@ this challenge will test your back end skills. you are required to use express a
 - Database name has to be called - "covid_19"
 
 ### Patients Table
-- Columns: id, name, symptom, city_id, status, hospital_id
+- Columns: id, name, symptom, cityId, status('Respiratory', 'Insulation', 'waiting'), hospitalId.
 ### Cities Table
-- Columns: id, name, population
+- Columns: id, name, population.
 ### Hospitals Table
-- Columns: id, name, respirator_amount
-### Patients Table
-- Columns: 
-### Symptompes_by_patiens Table
-- Columns: patient_id, symptom_id
+- Columns: id, name, respiratorAmount, maxCapacity. 
 ### Symptompes Table
 - Columns: id, name
-### Covid_test Table
-- Columns: id, patient_id, is_sick
+### CovidTests Table
+- Columns: id, patientId, isSick(boolean).
 
 
 ## Rest API Requirements
@@ -44,7 +40,7 @@ this challenge will test your back end skills. you are required to use express a
 - GET all patients by symptom id.
 - GET patient by id covid 19 challenge.
 - GET patient by id.
-- 
+
 ### POST Methods
 - POST a new patient.
 - POST a new symptom.

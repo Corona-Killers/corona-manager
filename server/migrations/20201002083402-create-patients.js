@@ -11,6 +11,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      dateOfBirth: {
+        type: Sequelize.DATE
+      },
       cityId: {
         type: Sequelize.INTEGER
       },
@@ -26,6 +29,9 @@ module.exports = {
       },
       updatedAt: {
         allowNull: false,
+        type: Sequelize.DATE
+      },
+      deletedAt: {
         type: Sequelize.DATE
       }
     });

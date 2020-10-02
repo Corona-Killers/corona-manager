@@ -1,6 +1,6 @@
 const express = require("express");
 const Sequelize = require("sequelize");
-const {  } = require("../../models");
+// const {  } = require("../../models");
 const medicineRouter = express.Router();
 const Op = Sequelize.Op;
 

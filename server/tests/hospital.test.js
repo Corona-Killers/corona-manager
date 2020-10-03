@@ -77,3 +77,4 @@ describe("Patient api tests", () => {
     expect(body[0].name).toBe("Tel Hashomer");
   });
 });
+

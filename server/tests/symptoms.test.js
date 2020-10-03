@@ -66,9 +66,9 @@ describe("Patient api tests", () => {
       .get("/api/v1/symptoms")
       .expect(200);
     expect(symptoms.length).toBe(3);
-    expect(symptoms[0].name).toBe("Difficulty Breathing");
-    expect(symptoms[1].name).toBe("Dizziness");
-    expect(symptoms[2].name).toBe("Headache");
+    expect(symptoms[0].name).toBe(symptomMock[0].name);
+    expect(symptoms[1].name).toBe(symptomMock[1].name);
+    expect(symptoms[2].name).toBe(symptomMock[2].name);
   });
 
   it("get symptom by id.", async () => {

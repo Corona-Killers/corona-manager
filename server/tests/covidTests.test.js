@@ -25,6 +25,8 @@ const testUpdate = {
 }
 
 
+
+
 describe("Patient api tests", () => {
   beforeAll(async () => {
     console.log("process.env.NODE_ENV", process.env.NODE_ENV);
@@ -67,12 +69,22 @@ const { body : negativeTests}  = await request(app).get("/api/v1/covidtests/test
 expect(negativeTests.count).toBe(2);
 });
 
+it("Can get all the tests by patient id", async () => {
+  const { body } = await request(app).get("/api/v1/covidtests/1").expect(200);
+  console.log(body);
+  expect(body.id).toBe(1);
+  expect(body.isSick).toBe(true);
+});
+
 it("can update the covid test result by patient id", async () => {
   const { body : updated} = await request(app).put("/api/v1/covidtests/1").send(testUpdate).expect(200);
-  const { body } = await request(app).get("/api/v1/patients/byId/1")
-  expect(body.CovidTests[0].isSick).toBe(testUpdate.isSick)
+  const { body } = await request(app).get("/api/v1/covidtests/1")
+  expect(body.isSick).toBe(testUpdate.isSick)
 })
 
-
-
+it("Can delete a covid test by test id", async () => {
+  await request(app).delete("/api/v1/covidtests/1").expect(200);
+  const { body } = await request(app).get("/api/v1/covidtests");
+  expect(body.length).toBe(4);
+});
 });

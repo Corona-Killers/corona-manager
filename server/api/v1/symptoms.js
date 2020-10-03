@@ -7,22 +7,28 @@ const Op = Sequelize.Op;
 
 // GET
 symptomsRouter.get("/", async (req, res, next) => {
+  // try {
+  //   const allSymptoms = await Symptoms.findAll({
+  //     include: [
+  //       {
+  //         model: SymptomsByPatients,
+  //         include: [
+  //           {
+  //             model: Patients,
+  //           },
+  //         ],
+  //       },
+  //     ],
+  //   });
+  //   res.json(allSymptoms);
+  // } catch (error) {
+  //   res.send({ error });
+  // }
   try {
-    const allSymptoms = await Symptoms.findAll({
-      include: [
-        {
-          model: SymptomsByPatients,
-          include: [
-            {
-              model: Patients,
-            },
-          ],
-        },
-      ],
-    });
-    res.json(allSymptoms);
+    const allSymptoms = await Symptoms.findAll();
+    res.send(allSymptoms)
   } catch (error) {
-    res.send({ error });
+    res.json(error);
   }
 });
 symptomsRouter.get("/byId/:symptomId", async (req, res, next) => {

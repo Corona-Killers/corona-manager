@@ -6,7 +6,7 @@ module.exports = [
       },
       {
         name: 'Tel Hashomer',
-        respiratorAmount: 10,
+        respiratorAmount: 5,
         maxCapacity: 15
       }
   ];

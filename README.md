@@ -1,7 +1,7 @@
 # Corona Manager Challenge
 
 ## Welcome To The Challenge!
-We need your help to beat the covid pandemic !! \
+We need your help to beat the COVID pandemic !! \
 this challenge will test your Back-End skills. you are required to use express.js and sequelize to analyze data from the given data base.
 
 
@@ -9,16 +9,16 @@ this challenge will test your Back-End skills. you are required to use express.j
 
 * [Tasks](#Tasks) 
 * [Rest API](#Rest-API)
+* [Database Requirements](#Database-Requirements)
+* [Rest API Requirement](#Rest-API-Requirement)
 
 ## Tasks
 - Create an express server that will analyze details from the data base and display it to the client.
 - Build [Rest-API](#Rest-API) for each model in the data base.
 - Pass all the tests.
-- Use the Sequelize Paranoid when patient recovered or dead.
-(first change their status and then delete them)
-- Use underscore in DB in all the models. In node it should perform in camelCase. 
-Hint: ("define": {"underscored": true})
-
+- Use the Sequelize Paranoid (in all tables), make sure that all models have "deletedAt" column.
+- Use underscore in DB in all the models tables. In node it should perform in camelCase. Hint: ("define": {"underscored": true})
+- After you created all your models and tables you can run the seeders command, that will run the seeders file that you have in your backend (command: npx sequlize-cli db:seed:all)
 
 ## Database Requirements(the test checks that)
 ### Database
@@ -27,13 +27,15 @@ Hint: ("define": {"underscored": true})
 - Database name has to be called - "covid_19"
 
 ### Patients Table
-- Columns: id, dateOfBirth, cityId, name, symptom, status('sick', 'respiratory', 'recovered', 'dead', 'isolation'), hospitalId.
+- Columns: id, dateOfBirth, name, symptom, status('sick', 'respiratory', 'recovered', 'dead', 'isolation'), cityId, hospitalId.
 ### Cities Table
 - Columns: id, name, population.
 ### Hospitals Table
 - Columns: id, name, respiratorAmount, maxCapacity. 
 ### Symptompes Table
 - Columns: id, name
+### SymptompesByPatients Table
+- Columns: id, patientId, symptonId
 ### CovidTests Table
 - Columns: id, patientId, isSick(boolean).
 

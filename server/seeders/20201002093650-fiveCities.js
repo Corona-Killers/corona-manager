@@ -49,24 +49,26 @@ module.exports = {
       updated_at: new Date(),
     },
     {
-      name: 'H'dera,
+      name: 'Hadera',
       population: 100000,
       created_at: new Date(),
       updated_at: new Date(),
     },
     {
-      name: 'NGedera',
-      opulation: 100000,
+      name: 'Gedera',
+      population: 100000,
       created_at: new Date(),
       updated_at: new Date(),
     },
     {
-      name: 'NSderot',      population: 100000,
+      name: 'Sderot',     
+      population: 100000,
       created_at: new Date(),
       updated_at: new Date(),
     },
     {
-      name:: NBe\'er Sheva',      population: 100000,
+      name: 'NBe\'er Sheva',      
+      population: 100000,
       created_at: new Date(),
       updated_at: new Date(),
     }

@@ -23,7 +23,6 @@ covidTestsRouter.get("/test-results/:testResult", async (req, res) => {
         attributes:[[Sequelize.fn("COUNT", Sequelize.col("is_sick")), 'count']],
         where: {isSick: {[Op.eq]: req.params.testResult}} 
   })
-    console.log(countTests);
     res.json(countTests[0]);
   } catch (error) {
     res.json(error)

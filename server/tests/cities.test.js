@@ -21,7 +21,7 @@ const symptomMock = require("./mockData/symptomsMock");
 const SymptomsByPatientsMock = require("./mockData/symptomsByPatientMock");
 const hospitalsMock = require("./mockData/hospitalsMock");
 
-describe("Patient api tests", () => {
+describe("Cities api tests", () => {
     beforeAll(async () => {
       console.log("process.env.NODE_ENV", process.env.NODE_ENV);
       await Patients.destroy({ truncate: true, force: true });
@@ -30,13 +30,6 @@ describe("Patient api tests", () => {
       await SymptomsByPatients.destroy({ truncate: true, force: true });
       await Cities.destroy({ truncate: true, force: true });
       await Hospitals.destroy({ truncate: true, force: true }); 
-    });
-  
-    afterAll(async () => {
-      app.close();
-    });
-  
-    it("Can add data to the table", async () => {
       const patientsResult = await Patients.bulkCreate(patientsMock);
       expect(patientsResult.length).toBe(5);
   
@@ -57,6 +50,11 @@ describe("Patient api tests", () => {
       const hospitalsResult = await Hospitals.bulkCreate(hospitalsMock);
       expect(hospitalsResult.length).toBe(2);
     });
+  
+    afterAll(async () => {
+      app.close();
+    });
+  
     it("Can get all cities", async () => {
         const { body } = await request(app).get("/api/v1/cities").expect(200);
     

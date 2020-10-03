@@ -13,6 +13,7 @@ this challenge will test your Back-End skills. you are required to use express.j
 * [Rest API Requirement](#Rest-API-Requirement)
 
 ## Tasks
+- Create the right migrations and models based on the requirements we give (you can run the seed files with npx sequelize db:seed:all to see that the tables are right)
 - Create an express server that will analyze details from the data base and display it to the client.
 - Build [Rest-API](#Rest-API) for each model in the data base.
 - Pass all the tests.

@@ -76,7 +76,7 @@ it("Can get all the tests by patient id", async () => {
   expect(body.isSick).toBe(true);
 });
 
-it("can update the covid test result by patient id", async () => {
+it("can update the covid test result by test id", async () => {
   const { body : updated} = await request(app).put("/api/v1/covidtests/1").send(testUpdate).expect(200);
   const { body } = await request(app).get("/api/v1/covidtests/1")
   expect(body.isSick).toBe(testUpdate.isSick)

@@ -68,11 +68,10 @@ describe("Patient api tests", () => {
   it("Can get all the Patients with their cities name, test results, and symptoms", async () => {
     const { body } = await request(app).get("/api/v1/patients").expect(200);
     expect(body.length).toBe(5);
-    expect(body[0].name).toBe("patient1")
-    expect(body[1].SymptomsByPatients[0].Symptom.name).toBe("Difficulty Breathing")
-    expect(body[2].City.name).toBe("Tel-aviv")
+    expect(body[0].name).toBe(patientsMock[0].name)
+    expect(body[1].SymptomsByPatients[0].Symptom.name).toBe(Symptoms[0].name)
+    expect(body[2].City.name).toBe(citiesMock[0].name)
     expect(body[3].CovidTests[0].isSick).toBe(false)
-
   });
 
     it('Can get all patients with covid Tests that are positive', async () => {
@@ -83,9 +82,9 @@ describe("Patient api tests", () => {
   it("Can get pateint by id with his city, test result and symptoms", async () => {
     const { body } = await request(app).get("/api/v1/patients/byId/2").expect(200);
     console.log(body);
-    expect(body.City.name).toBe("Tel-aviv");
+    expect(body.City.name).toBe(citiesMock[0].name);
     expect(body.CovidTests[0].isSick).toBe(false);
-    expect(body.SymptomsByPatients[0].Symptom.name).toBe("Difficulty Breathing");
+    expect(body.SymptomsByPatients[0].Symptom.name).toBe(Symptoms[0].name);
   });
   
   

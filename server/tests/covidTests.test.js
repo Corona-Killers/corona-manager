@@ -36,30 +36,28 @@ describe("Patient api tests", () => {
     await SymptomsByPatients.destroy({ truncate: true, force: true });
     await Cities.destroy({ truncate: true, force: true });
     await Hospitals.destroy({ truncate: true, force: true }); 
-  });
-
-  afterAll(async () => {
-    app.close();
-  });
-
-  it("Can add new patients, cities, symptoms, hospitals and covid tests", async () => {
+    
     const patientsResult = await Patients.bulkCreate(patientsMock);
     expect(patientsResult.length).toBe(5);
-
+  
     const covidTestResult = await CovidTests.bulkCreate(covidTestMock);
     expect(covidTestResult.length).toBe(5);
-
+  
     const citiesResult = await Cities.bulkCreate(citiesMock);
     expect(citiesResult.length).toBe(2);
-
+  
     const symptomsResult = await Symptoms.bulkCreate(symptomMock);
     expect(symptomsResult.length).toBe(3);
-
+  
     const symptomsByPatientsResult = await SymptomsByPatients.bulkCreate(SymptomsByPatientsMock);
     expect(symptomsByPatientsResult.length).toBe(5);
-
+  
     const hospitalsResult = await Hospitals.bulkCreate(hospitalsMock);
     expect(hospitalsResult.length).toBe(2);
+  });
+  
+  afterAll(async () => {
+    app.close();
   });
 
 it("Count all the covid tests by results", async () => {

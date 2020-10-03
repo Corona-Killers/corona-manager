@@ -20,6 +20,7 @@ const citiesMock = require("./mockData/citiesMock");
 const symptomMock = require("./mockData/symptomsMock");
 const SymptomsByPatientsMock = require("./mockData/symptomsByPatientMock");
 const hospitalsMock = require("./mockData/hospitalsMock");
+const updateCity = {name: "Zihron Yakov" , population: 1};
 
 describe("Cities api tests", () => {
     beforeAll(async () => {
@@ -63,26 +64,26 @@ describe("Cities api tests", () => {
     it("Can get a city by id with the number of patients from that city", async () => {
       const { body } = await request(app).get("/api/v1/cities/byId/2").expect(200);
   
-      expect(body.name).toBe("Haifa");
+      expect(body.name).toBe(citiesMock[1].name);
       expect(body.Patients.length).toBe(3);
-      expect(body.Patients[0].name).toBe('patient1');
-      expect(body.Patients[1].name).toBe('patient4');
-      expect(body.Patients[2].name).toBe('patient5');
+      expect(body.Patients[0].name).toBe(patientsMock[0].name);
+      expect(body.Patients[1].name).toBe(patientsMock[3].name);
+      expect(body.Patients[2].name).toBe(patientsMock[4].name);
     });
     it("Can get the most sick city", async () => {
       const { body } = await request(app).get("/api/v1/cities/mostsick").expect(200);
       
-      expect(body[0].name).toBe("Haifa");
+      expect(body[0].name).toBe(citiesMock[1].name);
       expect(body[0].Patients.length).toBe(3);
-      expect(body[0].Patients[0].name).toBe('patient1');
-      expect(body[0].Patients[1].name).toBe('patient4');
-      expect(body[0].Patients[2].name).toBe('patient5');
+      expect(body[0].Patients[0].name).toBe(patientsMock[0].name);
+      expect(body[0].Patients[1].name).toBe(patientsMock[3].name);
+      expect(body[0].Patients[2].name).toBe(patientsMock[4].name);
     });
 
     it("Can update a cities name and population", async () => {
-        await request(app).put("/api/v1/cities/1").send({name: "Zihron Yakov" , population: 1}).expect(200);
+        await request(app).put("/api/v1/cities/1").send(updateCity).expect(200);
         const { body } = await request(app).get("/api/v1/cities/byId/1");
-        expect(body.name).toBe("Zihron Yakov");
+        expect(body.name).toBe(updateCity.name);
         expect(body.population).toBe(1);
     });
 

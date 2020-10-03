@@ -73,7 +73,7 @@ describe("Symptoms api tests", () => {
     const { body: symptom } = await request(app)
       .get("/api/v1/symptoms/byId/1")
       .expect(200);
-    expect(symptom.name).toBe("Difficulty Breathing");
+    expect(symptom.name).toBe(symptomMock[0].name);
   });
 
   it("create new symptom for patient", async () => {
@@ -84,7 +84,7 @@ describe("Symptoms api tests", () => {
     const { body } = await request(app)
       .get("/api/v1/patients/byId/1")
       .expect(200);
-    expect(body.SymptomsByPatients[1].Symptom.name).toBe("Dizziness");
+    expect(body.SymptomsByPatients[1].Symptom.name).toBe(symptomMock[1].name);
   });
 
   it("can delete certain symptom for patient", async () => {

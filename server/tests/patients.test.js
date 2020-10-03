@@ -82,6 +82,7 @@ describe("Patient api tests", () => {
 
   it("Can get pateint by id with his city, test result and symptoms", async () => {
     const { body } = await request(app).get("/api/v1/patients/byId/2").expect(200);
+    console.log(body);
     expect(body.City.name).toBe("Tel-aviv");
     expect(body.CovidTests[0].isSick).toBe(false);
     expect(body.SymptomsByPatients[0].Symptom.name).toBe("Difficulty Breathing");

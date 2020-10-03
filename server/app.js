@@ -3,8 +3,6 @@ const app = express();
 
 app.use(express.json());
 
-console.log("here");
-
 app.get('/', (req, res) => {
   res.send('Hello World!')
 });

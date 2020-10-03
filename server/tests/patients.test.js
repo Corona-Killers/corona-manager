@@ -1,8 +1,8 @@
 const request = require("supertest");
 const app = require("../app");
 
+//model for bulkCreate
 require('mysql2/node_modules/iconv-lite').encodingExists('foo');
-
 
 const {
   Patients,
@@ -10,134 +10,16 @@ const {
   Symptoms,
   SymptomsByPatients,
   Cities,
+  Hospitals
 } = require("../models");
-// const { patientsMock, covidTestMock, citiesMock, symptomMock, SymptomsByPatientsMock } = require('./mockData');
-const patientsMock = [
-  {
-    name: "patient1",
-    dateOfBirth: "2001/04/05",
-    cityId: 2,
-    status: "isolation",
-    hospitalId: 1,
-  },
-  {
-    name: "patient2",
-    dateOfBirth: "1991/01/19",
-    cityId: 1,
-    status: "dead",
-    hospitalId: 1,
-  },
-  {
-    name: "patient3",
-    dateOfBirth: "1987/02/22",
-    cityId: 1,
-    status: "respiratory",
-    hospitalId: 2,
-  },
-  {
-    name: "patient4",
-    dateOfBirth: "1953/05/15",
-    cityId: 2,
-    status: "respiratory",
-    hospitalId: 2,
-  },
-  {
-    name: "patient5",
-    dateOfBitrth: "1989/02/25",
-    cityId: 2,
-    status: "isolation",
-    hospitalId: 2,
-  },
-];
 
-const covidTestMock = [
-  {
-    patientId: 1,
-    isSick: true,
-  },
-  {
-    patientId: 2,
-    isSick: false,
-  },
-  {
-    patientId: 3,
-    isSick: true,
-  },
-  {
-    patientId: 4,
-    isSick: false,
-  },
-  {
-    patientId: 5,
-    isSick: true,
-  },
-];
-citiesMock = [
-  {
-    name: "Tel-aviv",
-    population: 15,
-  },
-  {
-    name: "Haifa",
-    population: 10,
-  },
-];
-
-const symptomMock = [
-  {
-    name: "Difficulty Breathing",
-  },
-  {
-    name: "Dizziness",
-  },
-  {
-    name: "Headache",
-  },
-];
-
-const SymptomsByPatientsMock = [
-  {
-    symptomId: 1,
-    patientId: 1,
-  },
-  {
-    symptomId: 1,
-    patientId: 2,
-  },
-  {
-    symptomId: 2,
-    patientId: 3,
-  },
-  {
-    symptomId: 1,
-    patientId: 4,
-  },
-  {
-    symptomId: 2,
-    patientId: 5,
-  },
-];
-
-const HospitalsMock = [
-  {
-    name: "Rambam",
-    respiratorAmount: 7,
-    maxCapacity: 20,
-  },
-  {
-    name: "Tel Hashomer",
-    respiratorAmount: 10,
-    maxCapacity: 15,
-  },
-];
-
-singlePatientMock = {
-  name: "patient1",
-  dateOfBirth: "2001/04/05",
-  cityId: 2,
-  status: "isolation",
-  hospitalId: 1,
-}
+//mock data
+const patientsMock = require('./mockData/patientMock')
+const covidTestMock = require('./mockData/covidTestMock')
+const citiesMock = require('./mockData/citiesMock')
+const symptomMock = require('./mockData/symptomsMock')
+const SymptomsByPatientsMock = require('./mockData/symptomsByPatientMock')
+const hospitalsMock = require("./mockData/hospitalsMock");
 
 describe("Patient api tests", () => {
 
@@ -170,6 +52,9 @@ describe("Patient api tests", () => {
     
     const symptomsByPatientsResult = await SymptomsByPatients.bulkCreate(SymptomsByPatientsMock)
     expect(symptomsByPatientsResult.length).toBe(5)
+    
+    const hospitalsResult = await Hospitals.bulkCreate(hospitalsMock)
+    expect(hospitalsResult.length).toBe(2)
   
   });
 

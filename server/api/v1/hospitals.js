@@ -18,27 +18,26 @@ hospitalsRouter.get("/", async (req, res, next) => {
 hospitalsRouter.get("/respirator_luck", async (req, res, next) => {
   try {
     const allHospitals = await Hospitals.findAll({
-      include: [{ model: Patients }],
+      include: [
+        {
+          model: Patients,
+          where: {
+            status: 'respiratory'
+          }
+        },
+      ],
       // raw: true,
     });
-    const respiratoryPatients = allHospitals.map((hospital) =>
-      hospital.filter((hosp) =>
-        hosp.Patients.filter((patient) => {
-          console.log(patient);
-          return patient["status"] === "respiratory";
-        })
-      )
+    const hospitalsInLuck = allHospitals.filter((hospital) =>
+     (hospital.respiratorAmount - hospital.Patients.length) < 5
     );
 
-    console.log("---------", respiratoryPatients);
-    const respiratorsLackHospitals = respiratoryPatients.filter(
-      (hospital) => hospital.respiratorAmount - hospital.Patients.length > 5
-    );
-    res.json(respiratorsLackHospitals);
+    res.json(hospitalsInLuck);
   } catch (err) {
-    res.send({ err });
+    res.json({ err });
   }
 });
+
 hospitalsRouter.get("/:hospitalId", async (req, res, next) => {
   try {
     const hospital = await Hospitals.findOne({

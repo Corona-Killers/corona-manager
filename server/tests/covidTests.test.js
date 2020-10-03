@@ -73,6 +73,4 @@ it("can update the covid test result by patient id", async () => {
   expect(body.CovidTests[0].isSick).toBe(testUpdate.isSick)
 })
 
-
-
 });

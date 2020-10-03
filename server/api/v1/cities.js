@@ -20,26 +20,16 @@ citiesRouter.get("/mostsick", async (req, res, next) => {
     const allCities = await Cities.findAll({
       include: [{ model: Patients }],
     });
-    const citySickPeople = allCities.map((city) => {
-      city.Patients.filter((patient) => {
-        patient.status == "sick" ||
-          patient.status == "respiratory" ||
-          patient.status == "recovered" ||
-          patient.status == "dead";
-      });
-    });
+    let mostSickCity = [allCities[0]];
+    for (let i = 0; i < allCities.length; i++) {
+      if (mostSickCity[0].Patients.length < allCities[i].Patients.length) {
+        mostSickCity = [allCities[i]];
+      }
 
-    console.log("-------------------", citySickPeople);
-
-    let sickCounter = 0;
-    for (let i = 0; i < citySickPeople.length; i++) {
-      if (sickCounter > citySickPeople.Patients.length) {
-        sickCounter = citySickPeople.Patients.length;
+      else if (mostSickCity[0].Patients.length < allCities[i].Patients.length) {
+        mostSickCity.push(allCities[i]);
       }
     }
-    const mostSickCity = citySickPeople.filter(
-      (city) => city.Patients.length === sickCounter
-    );
     res.json(mostSickCity);
   } catch (err) {
     res.json(err);

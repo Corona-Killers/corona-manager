@@ -51,8 +51,8 @@ Hint: ("define": {"underscored": true})
 - GET all the hospitals that need to bring more respirator machines (less than five machines that are available in the hospital).
 #### Cities
 - GET all cities number of sick people in every hospital in the city.
-- GET city by id.
-- GET the city with the most sick people (included every person that ever get sick).
+- GET city by id with its number of patients.
+- GET the city with the most patients (regardless of their state) as an array as there can be several cities at the top.
 #### Symptoms
 - GET all symptoms.
 - GET symptom by id.
@@ -68,6 +68,7 @@ Hint: ("define": {"underscored": true})
 - PUT a new symptom.
 - PUT a new symptom for patient.
 - PUT a CovidTests for patient.
+- PUT update a city name or population.
 
 ### DELETE Methods
 - DELETE a patient.

@@ -52,7 +52,7 @@ patientRouter.get("/positive", async (req, res, next) => {
   }
 });
 
-patientRouter.get("/:patientId", async (req, res, next) => {
+patientRouter.get("/byId/:patientId", async (req, res, next) => {
   try {
     const patient = await Patients.findOne({
       where: { id: req.params.patientId },

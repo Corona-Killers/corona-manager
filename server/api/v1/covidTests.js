@@ -59,11 +59,15 @@ covidTestsRouter.post("/", async (req, res, next) => {
 });
 
 // PUT
-covidTestsRouter.put("/:covidTestId", async (req, res, next) => {
+covidTestsRouter.put("/:patientId", async (req, res, next) => {
   try {
-    const covidTest = await CovidTests.findByPk(req.params.covidTestId);
-    const result = await covidTest.update(req.body);
-    res.json(result);
+    const result = await CovidTests.update({
+      isSick: req.body.isSick},
+      {where: {
+        patientId: req.params.patientId
+      }}
+    );
+    res.json({updated: true});
   } catch (error) {
     res.json(error);
   }

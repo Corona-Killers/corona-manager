@@ -67,7 +67,7 @@ describe("Patient api tests", () => {
   });
 
   it("GET Hospital by id", async () => {
-    const { body } = await request(app).get("/api/v1/hospitals/1").expect(200);
+    const { body } = await request(app).get("/api/v1/hospitals/byId/1").expect(200);
     expect(body.name).toBe("Rambam");
   });
 

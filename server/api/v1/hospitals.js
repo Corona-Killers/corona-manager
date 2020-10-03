@@ -38,7 +38,7 @@ hospitalsRouter.get("/respirator_luck", async (req, res, next) => {
   }
 });
 
-hospitalsRouter.get("/:hospitalId", async (req, res, next) => {
+hospitalsRouter.get("/byId/:hospitalId", async (req, res, next) => {
   try {
     const hospital = await Hospitals.findOne({
       include: [{ model: Patients }],

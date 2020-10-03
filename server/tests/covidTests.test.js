@@ -20,6 +20,10 @@ const citiesMock = require("./mockData/citiesMock");
 const symptomMock = require("./mockData/symptomsMock");
 const SymptomsByPatientsMock = require("./mockData/symptomsByPatientMock");
 const hospitalsMock = require("./mockData/hospitalsMock");
+const testUpdate = {
+  isSick: false
+}
+
 
 describe("Patient api tests", () => {
   beforeAll(async () => {
@@ -62,6 +66,12 @@ expect(positiveTests.count).toBe(3);
 const { body : negativeTests}  = await request(app).get("/api/v1/covidtests/test-results/0").expect(200);
 expect(negativeTests.count).toBe(2);
 });
+
+it("can update the covid test result by patient id", async () => {
+  const { body : updated} = await request(app).put("/api/v1/covidtests/1").send(testUpdate).expect(200);
+  const { body } = await request(app).get("/api/v1/patients/byId/1")
+  expect(body.CovidTests[0].isSick).toBe(testUpdate.isSick)
+})
 
 
 

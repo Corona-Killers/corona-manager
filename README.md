@@ -39,42 +39,54 @@ Hint: ("define": {"underscored": true})
 
 
 ## Rest API Requirements
-### GET Methods
-#### Patients
-- GET all patients with their city, symptoms, covid test and status. 
-- GET patient by id with their city, symptoms, covid test and status.
-- GET all patients with covid Tests that are positive.
-- GET all patients by symptom.
-#### Hospitals
-- GET all hospitals with their capacity (maxCapacity), number of respirator (respiratorAmount)
-- GET Hospital by id.
-- GET all the hospitals that need to bring more respirator machines (less than five machines that are available in the hospital).
-#### Cities
-- GET all cities number of sick people in every hospital in the city.
-- GET city by id with its number of patients.
-- GET the city with the most patients (regardless of their state) as an array as there can be several cities at the top.
-#### Symptoms
-- GET all symptoms.
-- GET symptom by id.
-#### Covid Tests
-- GET The amount of covid test by result(positive/negative).
-- GET all covid test by patient id.
-### POST Methods
-- POST a new patient with new CovidTests and thier new symptom
-- POST a new symptom for patient.
 
+#### Patients
+### GET Methods
+- GET "/api/v1/patients" all patients with their city, symptoms, covid test and status. 
+- GET "/api/v1/patients/byId/:patientId" patient by id with their city, symptoms, covid test and status.
+- GET "/api/v1/patients/positive" all patients with covid Tests that are positive.
+### POST Methods
+- POST "/api/v1/patients" a new patient with new CovidTests and thier new symptom
+### DELETE Methods
+- "/api/v1/patients/:patientId DELETE a patient.
+
+#### Hospitals
+### GET Methods
+- GET "/api/v1/hospitals" all hospitals with their capacity (maxCapacity), number of respirator (respiratorAmount)
+- GET "/api/v1/hospitals/byId/:hospitalId" Hospital by id.
+- GET "/api/v1/hospitals/respirator_luck" all the hospitals that need to bring more respirator machines (less than five machines that are available in the hospital).
+
+#### Cities
+### GET Methods
+- GET "/api/v1/cities" all cities number of sick people in every hospital in the city.
+- GET "/api/v1/cities/byId/:cityId" city by id with its number of patients.
+- GET "/api/v1/cities/mostsick" the city with the most patients (regardless of their state) as an array as there can be several cities at the top.
 ### PUT Methods
-- PUT a new patient.
-- PUT a new symptom.
-- PUT a new symptom for patient.
-- PUT a CovidTests for patient.
-- PUT update a city name or population.
+- PUT "/api/v1/cities/1" update a city name or population. 
+### DELETE Methods
+- DELETE "/api/v1/cities/1" a city.
+
+#### Symptoms
+### GET Methods
+- GET "/api/v1/symptoms" all symptoms.
+- GET "/api/v1/symptoms/:symptomId" symptom by id.
+### POST Methods
+- POST "/api/v1/symptoms" add new symptom for patient
+
+### DELETE Methods
+- DELETE  "/api/v1/symptomsByPatient/:patientId" delete symptom by patient id.
+
+#### Covid Tests
+### GET Methods
+- GET "/api/v1/covidtests/test-results/:testResult" The amount of covid test by result(positive/negative).
+- GET "/api/v1/covidtests/test-results/:covidTestId" covid test by id.
+### PUT Methods
+- PUT "/api/v1/covidtests/:patientId update covid test result by patient id. 
+
 
 ### DELETE Methods
 - DELETE a patient.
-- DELETE a symptom.
 - DELETE a hospital.
-- DELETE a city.
 - DELETE a covid test.
 
 ## Good Luck!

@@ -36,7 +36,7 @@ citiesRouter.get("/mostsick", async (req, res, next) => {
   }
 });
 
-citiesRouter.get("/:cityId", async (req, res, next) => {
+citiesRouter.get("/byId/:cityId", async (req, res, next) => {
   try {
     const city = await Cities.findOne({
       include: [{ model: Patients }],

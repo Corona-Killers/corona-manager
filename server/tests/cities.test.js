@@ -63,7 +63,7 @@ describe("Patient api tests", () => {
         expect(body.length).toBe(2);
       });
     it("Can get a city by id with the number of patients from that city", async () => {
-      const { body } = await request(app).get("/api/v1/cities/2").expect(200);
+      const { body } = await request(app).get("/api/v1/cities/byId/2").expect(200);
   
       expect(body.name).toBe("Haifa");
       expect(body.Patients.length).toBe(3);
@@ -83,7 +83,7 @@ describe("Patient api tests", () => {
 
     it("Can update a cities name and population", async () => {
         await request(app).put("/api/v1/cities/1").send({name: "Zihron Yakov" , population: 1}).expect(200);
-        const { body } = await request(app).get("/api/v1/cities/1");
+        const { body } = await request(app).get("/api/v1/cities/byId/1");
         expect(body.name).toBe("Zihron Yakov");
         expect(body.population).toBe(1);
     });

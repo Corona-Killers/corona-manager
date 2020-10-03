@@ -13,7 +13,7 @@ symptomsByPatientRouter.post("/", async (req, res) => {
   }
 });
 
-symptomsByPatientRouter.delete("/:id", async (req, res) => {
+symptomsByPatientRouter.delete("/:patientId", async (req, res) => {
   try {
     const deleted = await SymptomsByPatients.destroy({
       where: {

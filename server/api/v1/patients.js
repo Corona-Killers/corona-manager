@@ -89,18 +89,19 @@ patientRouter.post("/", async (req, res, next) => {
       createdAt: new Date(),
       updatedAt: new Date(),
     });
-    const { patientId } = patient.id
+    const patientId = patient.id
     const covidTest = await CovidTests.create({
-      patientId
+      patientId: patientId
     })
     const patientWithTest = await Patients.findOne({
-      where: { id: req.params.patientId },
+      where: { id: patientId },
       include: [
         {
           model: CovidTests,
         },
       ],
     });
+    console.log(patientWithTest);
     res.json(patientWithTest)
   } catch (error) {
     res.send({ error });

@@ -56,7 +56,7 @@ module.exports = {
     },
     {
       name: 'Gedera',
-      opulation: 100000,
+      population: 100000,
       created_at: new Date(),
       updated_at: new Date(),
     },

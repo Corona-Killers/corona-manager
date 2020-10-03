@@ -6,18 +6,19 @@ const Op = Sequelize.Op;
 
 symptomsByPatientRouter.post("/", async (req, res) => {
   try {
-    const newconnection = await SymptomsByPatients.create(req.body);
-    res.json(newconnection);
+    const newSymptom = await SymptomsByPatients.create(req.body);
+    res.json(newSymptom);
   } catch (err) {
     res.json({ err });
   }
 });
 
-symptomsByPatientRouter.delete("/:patientId", async (req, res) => {
+symptomsByPatientRouter.delete("/", async (req, res) => {
   try {
     const deleted = await SymptomsByPatients.destroy({
       where: {
-        id: [req.params.id],
+        patientId: req.body.patientId,
+        symptomId: req.body.symptomId
       },
     });
     res.json({ deleted: true });

@@ -62,14 +62,14 @@ Hint: ("define": {"underscored": true})
 - GET "/api/v1/cities/byId/:cityId" city by id with its number of patients.
 - GET "/api/v1/cities/mostsick" the city with the most patients (regardless of their state) as an array as there can be several cities at the top.
 #### PUT Methods
-- PUT "/api/v1/cities/1" update a city name or population. 
+- PUT "/api/v1/cities/:cityId" update a city name or population. 
 #### DELETE Methods
-- DELETE "/api/v1/cities/1" a city.
+- DELETE "/api/v1/cities/:cityId" a city.
 
 ### Symptoms
 #### GET Methods
 - GET "/api/v1/symptoms" all symptoms.
-- GET "/api/v1/symptoms/:symptomId" symptom by id.
+- GET "/api/v1/symptoms/byId/:symptomId" symptom by id.
 #### POST Methods
 - POST "/api/v1/symptoms" add new symptom for patient
 

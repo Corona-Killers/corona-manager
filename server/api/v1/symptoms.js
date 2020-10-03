@@ -1,6 +1,7 @@
 const express = require("express");
 const Sequelize = require("sequelize");
-const { Symptoms, Patients } = require("../../models");
+const { Symptoms, Patients, SymptomsByPatients } = require("../../models");
+const symptomsByPatientMock = require("../../tests/mockData/symptomsByPatientMock");
 const symptomsRouter = express.Router();
 const Op = Sequelize.Op;
 
@@ -8,17 +9,35 @@ const Op = Sequelize.Op;
 symptomsRouter.get("/", async (req, res, next) => {
   try {
     const allSymptoms = await Symptoms.findAll({
-      include: [{ model: Patients }],
+      include: [
+        {
+          model: SymptomsByPatients,
+          include: [
+            {
+              model: Patients,
+            },
+          ],
+        },
+      ],
     });
     res.json(allSymptoms);
   } catch (error) {
     res.send({ error });
   }
 });
-symptomsRouter.get("/:symptomId", async (req, res, next) => {
+symptomsRouter.get("/byId/:symptomId", async (req, res, next) => {
   try {
     const symptom = await Symptoms.findOne({
-      include: [{ model: Patients }],
+      include: [
+        {
+          model: SymptomsByPatients,
+          include: [
+            {
+              model: Patients,
+            },
+          ],
+        },
+      ],
       where: { id: req.params.symptomId },
     });
     res.json(symptom);

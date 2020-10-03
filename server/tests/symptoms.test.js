@@ -25,7 +25,7 @@ const newSymptomMock = {
   symptomId: 2,
 };
 
-describe("Patient api tests", () => {
+describe("Symptoms api tests", () => {
   beforeAll(async () => {
     console.log("process.env.NODE_ENV", process.env.NODE_ENV);
     await Patients.destroy({ truncate: true, force: true });

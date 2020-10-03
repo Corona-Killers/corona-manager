@@ -27,7 +27,7 @@ const testUpdate = {
 
 
 
-describe("Patient api tests", () => {
+describe("Covid test api tests", () => {
   beforeAll(async () => {
     console.log("process.env.NODE_ENV", process.env.NODE_ENV);
     await Patients.destroy({ truncate: true, force: true });

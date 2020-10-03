@@ -11,8 +11,8 @@ covidTestsRouter.get("/", async (req, res, next) => {
       include: [{ model: Patients }],
     });
     res.json(allCovidTests);
-  } catch (err) {
-    res.json(err);
+  } catch (error) {
+    res.json(error);
   }
 });
 
@@ -23,10 +23,21 @@ covidTestsRouter.get("/:covidTestId", async (req, res, next) => {
       where: { id: req.params.covidTestId },
     });
     res.json(covidTest);
-  } catch (err) {
-    res.json(err);
+  } catch (error) {
+    res.json(error);
   }
 });
+
+covidTestsRouter.get("/:testResult", async (req, res) => {
+  try {
+    const countTests = await CovidTests.Count({
+      where: { isSick: req.params.testResult }
+    });
+    res.json(countTests);
+  } catch (error) {
+    res.json(error)
+  }
+})
 
 // POST
 covidTestsRouter.post("/", async (req, res, next) => {
@@ -39,8 +50,8 @@ covidTestsRouter.post("/", async (req, res, next) => {
       updatedAt: new Date(),
     });
     res.json(covidTest);
-  } catch (err) {
-    res.json(err);
+  } catch (error) {
+    res.json(error);
   }
 });
 
@@ -50,8 +61,8 @@ covidTestsRouter.put("/:covidTestId", async (req, res, next) => {
     const covidTest = await CovidTests.findByPk(req.params.covidTestId);
     const result = await covidTest.update(req.body);
     res.json(result);
-  } catch (err) {
-    res.json(err);
+  } catch (error) {
+    res.json(error);
   }
 });
 

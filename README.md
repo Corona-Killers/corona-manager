@@ -43,6 +43,8 @@ Hint: ("define": {"underscored": true})
 #### Patients
 - GET all patients with their city, symptoms, covid test and status. 
 - GET patient by id with their city, symptoms, covid test and status.
+- GET all patients with covid Tests that are positive.
+- GET all covid test by patient id.
 #### Hospitals
 - GET all hospitals with their capacity (maxCapacity), number of respirator (respiratorAmount)
 - GET Hospital by id.
@@ -55,8 +57,7 @@ Hint: ("define": {"underscored": true})
 - GET all symptoms.
 - GET symptom by id.
 #### Covid Tests
-- GET all covid Tests that are positive.
-- GET covid Test by patient.
+
 - GET covid The amount of covid test that became positive.
 
 - GET all patients by symptom.

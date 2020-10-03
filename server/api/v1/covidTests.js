@@ -16,6 +16,26 @@ covidTestsRouter.get("/", async (req, res, next) => {
   }
 });
 
+covidTestsRouter.get("/results/:testResult", async (req, res) => {
+  try {
+    let countTests = 0
+    if(req.params.testResult === "true" || req.params.testResult === "positive") {
+       countTests = await CovidTests.findAll({
+        attributes:[[Sequelize.fn("COUNT", Sequelize.col("is_sick")), 'count']],
+        where: {isSick: {[Op.eq]: 1}} 
+      });
+    } else {
+       countTests = await CovidTests.findAll({
+        attributes:[[Sequelize.fn("COUNT", Sequelize.col("is_sick")), 'count']],
+        where: {isSick: {[Op.eq]: 0}} 
+    });
+  }
+    console.log(countTests);
+    res.json(countTests[0]);
+  } catch (error) {
+    res.json(error)
+  }
+})
 covidTestsRouter.get("/:covidTestId", async (req, res, next) => {
   try {
     const covidTest = await CovidTests.findOne({
@@ -28,16 +48,6 @@ covidTestsRouter.get("/:covidTestId", async (req, res, next) => {
   }
 });
 
-covidTestsRouter.get("/:testResult", async (req, res) => {
-  try {
-    const countTests = await CovidTests.Count({
-      where: { isSick: req.params.testResult }
-    });
-    res.json(countTests);
-  } catch (error) {
-    res.json(error)
-  }
-})
 
 // POST
 covidTestsRouter.post("/", async (req, res, next) => {

@@ -100,5 +100,4 @@ describe("Patient api tests", () => {
     const { body } = await request(app).get("/api/v1/patients");
     expect(body.length).toBe(5);
   });
-
 });

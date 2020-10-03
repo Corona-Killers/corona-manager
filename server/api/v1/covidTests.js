@@ -29,13 +29,13 @@ covidTestsRouter.get("/test-results/:testResult", async (req, res) => {
     res.json(error)
   }
 })
-covidTestsRouter.get("/:covidTestId", async (req, res, next) => {
+covidTestsRouter.get("/:patientId", async (req, res, next) => {
   try {
-    const covidTest = await CovidTests.findOne({
+    const covidTests = await CovidTests.findOne({
       include: [{ model: Patients }],
-      where: { id: req.params.covidTestId },
+      where: { patientId: req.params.patientId },
     });
-    res.json(covidTest);
+    res.json(covidTests);
   } catch (error) {
     res.json(error);
   }

@@ -78,15 +78,13 @@ Hint: ("define": {"underscored": true})
 
 ### Covid Tests
 #### GET Methods
-- GET "/api/v1/covidtests/test-results/:testResult" The amount of covid test by result(positive/negative).
-- GET "/api/v1/covidtests/test-results/:covidTestId" covid test by id.
+- GET "/api/v1/covidtests/test-results/:testResult" The amount of covid test by result(true- 1/ false- 0)
+- GET "/api/v1/covidtests/test-results/:pateintId" All covid tests by patient id.
 #### PUT Methods
 - PUT "/api/v1/covidtests/:patientId update covid test result by patient id. 
 
-
 #### DELETE Methods
-- DELETE a patient.
-- DELETE a hospital.
-- DELETE a covid test.
+- DELETE a patient with paranoid.
+- DELETE "/api/vi/covidtests/:testId a covid test.
 
 ## Good Luck!

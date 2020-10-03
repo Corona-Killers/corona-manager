@@ -18,5 +18,5 @@ module.exports = [
     {
       patientId: 5,
       isSick: true,
-    },
+    }
   ];

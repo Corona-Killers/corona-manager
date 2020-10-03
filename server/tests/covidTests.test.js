@@ -71,7 +71,6 @@ expect(negativeTests.count).toBe(2);
 
 it("Can get all the tests by patient id", async () => {
   const { body } = await request(app).get("/api/v1/covidtests/1").expect(200);
-  console.log(body);
   expect(body.id).toBe(1);
   expect(body.isSick).toBe(true);
 });

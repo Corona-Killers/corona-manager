@@ -101,7 +101,6 @@ patientRouter.post("/", async (req, res, next) => {
         },
       ],
     });
-    console.log(patientWithTest);
     res.json(patientWithTest)
   } catch (error) {
     res.send({ error });

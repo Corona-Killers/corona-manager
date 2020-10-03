@@ -89,7 +89,6 @@ describe("Patient api tests", () => {
     expect(body.SymptomsByPatients[1].Symptom.name).toBe("Dizziness");
   });
 
-  //updated
   it("can delete certain symptom for patient", async () => {
     await request(app)
       .delete("/api/v1/symptomsByPatient")

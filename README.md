@@ -83,7 +83,7 @@ this challenge will test your Back-End skills. you are required to use express.j
 - GET "/api/v1/covidtests/test-results/:testResult" The amount of covid test by result(true- 1/ false- 0)
 - GET "/api/v1/covidtests/test-results/:pateintId" All covid tests by patient id.
 #### PUT Methods
-- PUT "/api/v1/covidtests/:patientId update covid test result by patient id. 
+- PUT "/api/v1/covidtests/:patientId update covid test result by the test id. 
 
 #### DELETE Methods
 - DELETE a patient with paranoid.

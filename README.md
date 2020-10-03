@@ -56,35 +56,35 @@ Hint: ("define": {"underscored": true})
 - GET "/api/v1/hospitals/byId/:hospitalId" Hospital by id.
 - GET "/api/v1/hospitals/respirator_luck" all the hospitals that need to bring more respirator machines (less than five machines that are available in the hospital).
 
-#### Cities
-### GET Methods
+### Cities
+#### GET Methods
 - GET "/api/v1/cities" all cities number of sick people in every hospital in the city.
 - GET "/api/v1/cities/byId/:cityId" city by id with its number of patients.
 - GET "/api/v1/cities/mostsick" the city with the most patients (regardless of their state) as an array as there can be several cities at the top.
-### PUT Methods
+#### PUT Methods
 - PUT "/api/v1/cities/1" update a city name or population. 
-### DELETE Methods
+#### DELETE Methods
 - DELETE "/api/v1/cities/1" a city.
 
-#### Symptoms
-### GET Methods
+### Symptoms
+#### GET Methods
 - GET "/api/v1/symptoms" all symptoms.
 - GET "/api/v1/symptoms/:symptomId" symptom by id.
-### POST Methods
+#### POST Methods
 - POST "/api/v1/symptoms" add new symptom for patient
 
-### DELETE Methods
+#### DELETE Methods
 - DELETE  "/api/v1/symptomsByPatient/:patientId" delete symptom by patient id.
 
-#### Covid Tests
-### GET Methods
+### Covid Tests
+#### GET Methods
 - GET "/api/v1/covidtests/test-results/:testResult" The amount of covid test by result(positive/negative).
 - GET "/api/v1/covidtests/test-results/:covidTestId" covid test by id.
-### PUT Methods
+#### PUT Methods
 - PUT "/api/v1/covidtests/:patientId update covid test result by patient id. 
 
 
-### DELETE Methods
+#### DELETE Methods
 - DELETE a patient.
 - DELETE a hospital.
 - DELETE a covid test.

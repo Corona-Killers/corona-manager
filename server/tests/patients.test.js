@@ -20,6 +20,13 @@ const citiesMock = require('./mockData/citiesMock')
 const symptomMock = require('./mockData/symptomsMock')
 const SymptomsByPatientsMock = require('./mockData/symptomsByPatientMock')
 const hospitalsMock = require("./mockData/hospitalsMock");
+const singlePatientMock = {
+    name: "patient6",
+    dateOfBitrth: new Date(1980, 1, 30),
+    cityId: 2,
+    status: "isolation",
+    hospitalId: 2,
+  }
 
 describe("Patient api tests", () => {
 
@@ -75,6 +82,10 @@ describe("Patient api tests", () => {
     expect(body.CovidTests[0].isSick).toBe(false);
     expect(body.SymptomsByPatients[0].Symptom.name).toBe("Difficulty Breathing");
   });
+
+  it("POST a new patient with new CovidTests and thier new symptom", async () => {
+    const { body } = await request(app).post("/api/v1/patients").send(singlePatientMock).expect(200);
+  })
 
   it("Can delete a patient by id", async () => {
     await request(app).delete("/api/v1/patients/1");

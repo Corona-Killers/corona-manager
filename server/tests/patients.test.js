@@ -69,7 +69,7 @@ describe("Patient api tests", () => {
     const { body } = await request(app).get("/api/v1/patients").expect(200);
     expect(body.length).toBe(5);
     expect(body[0].name).toBe(patientsMock[0].name)
-    expect(body[1].SymptomsByPatients[0].Symptom.name).toBe(Symptoms[0].name)
+    expect(body[1].SymptomsByPatients[0].Symptom.name).toBe(symptomMock[0].name)
     expect(body[2].City.name).toBe(citiesMock[0].name)
     expect(body[3].CovidTests[0].isSick).toBe(false)
   });
@@ -84,7 +84,7 @@ describe("Patient api tests", () => {
     console.log(body);
     expect(body.City.name).toBe(citiesMock[0].name);
     expect(body.CovidTests[0].isSick).toBe(false);
-    expect(body.SymptomsByPatients[0].Symptom.name).toBe(Symptoms[0].name);
+    expect(body.SymptomsByPatients[0].Symptom.name).toBe(symptomMock[0].name);
   });
   
   

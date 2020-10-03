@@ -82,14 +82,18 @@ describe("Patient api tests", () => {
     expect(body.CovidTests[0].isSick).toBe(false);
     expect(body.SymptomsByPatients[0].Symptom.name).toBe("Difficulty Breathing");
   });
-
+  
+  
   it("POST a new patient with new CovidTests and thier new symptom", async () => {
     const { body } = await request(app).post("/api/v1/patients").send(singlePatientMock).expect(200);
+    expect(body.id).toBe(body.CovidTests[0].patientId)
+    expect(body.CovidTests[0].isSick).toBe(null)
   })
-
+  
   it("Can delete a patient by id", async () => {
     await request(app).delete("/api/v1/patients/1");
     const { body } = await request(app).get("/api/v1/patients");
-    expect(body.length).toBe(4);
+    expect(body.length).toBe(5);
   });
+
 });

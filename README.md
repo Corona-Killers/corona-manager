@@ -40,18 +40,18 @@ Hint: ("define": {"underscored": true})
 
 ## Rest API Requirements
 
-#### Patients
-### GET Methods
+### Patients
+#### GET Methods
 - GET "/api/v1/patients" all patients with their city, symptoms, covid test and status. 
 - GET "/api/v1/patients/byId/:patientId" patient by id with their city, symptoms, covid test and status.
 - GET "/api/v1/patients/positive" all patients with covid Tests that are positive.
-### POST Methods
+#### POST Methods
 - POST "/api/v1/patients" a new patient with new CovidTests and thier new symptom
-### DELETE Methods
+#### DELETE Methods
 - "/api/v1/patients/:patientId DELETE a patient.
 
-#### Hospitals
-### GET Methods
+### Hospitals
+#### GET Methods
 - GET "/api/v1/hospitals" all hospitals with their capacity (maxCapacity), number of respirator (respiratorAmount)
 - GET "/api/v1/hospitals/byId/:hospitalId" Hospital by id.
 - GET "/api/v1/hospitals/respirator_luck" all the hospitals that need to bring more respirator machines (less than five machines that are available in the hospital).

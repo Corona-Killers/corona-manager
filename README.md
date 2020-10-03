@@ -44,7 +44,7 @@ Hint: ("define": {"underscored": true})
 - GET all patients with their city, symptoms, covid test and status. 
 - GET patient by id with their city, symptoms, covid test and status.
 - GET all patients with covid Tests that are positive.
-- GET all covid test by patient id.
+- GET all patients by symptom.
 #### Hospitals
 - GET all hospitals with their capacity (maxCapacity), number of respirator (respiratorAmount)
 - GET Hospital by id.
@@ -57,12 +57,8 @@ Hint: ("define": {"underscored": true})
 - GET all symptoms.
 - GET symptom by id.
 #### Covid Tests
-
-- GET covid The amount of covid test that became positive.
-
-- GET all patients by symptom.
-- GET patient by id covid 19 challenge.
-
+- GET The amount of covid test by result(positive/negative).
+- GET all covid test by patient id.
 ### POST Methods
 - POST a new patient with new CovidTests and thier new symptom
 - POST a new symptom for patient.

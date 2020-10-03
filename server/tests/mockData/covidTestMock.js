@@ -20,13 +20,3 @@ module.exports = [
       isSick: true,
     },
   ];
-    citiesMock = [
-      {
-        name: "Tel-aviv",
-        population: 15,
-      },
-      {
-        name: "Haifa",
-        population: 10,
-      },
-    ];

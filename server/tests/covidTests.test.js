@@ -57,11 +57,12 @@ describe("Patient api tests", () => {
   });
 
 it("Count all the covid tests by results", async () => {
-const { body : positiveTests} = await request(app).get("/api/v1/covidtests/results/positive").expect(200);
-console.log(positiveTests);
-const { body : negativeTests}  = await request(app).get("/api/v1/covidtests/results/negative").expect(200);
-console.log(negativeTests);
-expect(positiveTests.count + negativeTests.count).toBe(covidTestMock.length);
+const { body : positiveTests} = await request(app).get("/api/v1/covidtests/test-results/1").expect(200);
+expect(positiveTests.count).toBe(3);
+const { body : negativeTests}  = await request(app).get("/api/v1/covidtests/test-results/0").expect(200);
+expect(negativeTests.count).toBe(2);
 });
+
+
 
 });

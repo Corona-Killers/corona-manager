@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Grid from "@material-ui/core/Grid";
+import NavBar from "./components/AppBar";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: "green",
+  },
+});
 
 function App() {
+  const classes = useStyles()
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Grid className={classes.root} container>
+          <Grid xs={12}>
+            <NavBar />
+          </Grid>
+          <Switch>
+            <Route exact path="\"/>
+            <Route exact path="\hospitals" />
+            <Route exact path="\patients" />
+            <Route exact path="\covid-tests" />
+            <Route exact path="\cities" />
+          </Switch>
+        </Grid>
+      </Router>
     </div>
   );
 }

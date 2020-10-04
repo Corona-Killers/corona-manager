@@ -77,6 +77,31 @@ patientRouter.get("/byId/:patientId", async (req, res, next) => {
   }
 });
 
+
+patientRouter.get("/byName/:patientName", async (req, res, next) => {
+  try {
+    const patient = await Patients.findOne({
+      where: { 'name': {[Op.like]: `%${req.params.patientName}%`} },
+      include: [
+        {
+          model: SymptomsByPatients,
+          include: [{ model: Symptoms, attributes: ["name"] }],
+        },
+        {
+          model: Cities,
+          attributes: ["name", "population"],
+        },
+        {
+          model: CovidTests,
+        },
+      ],
+    });
+    res.json(patient);
+  } catch (error) {
+    res.send({ error });
+  }
+});
+
 patientRouter.post("/", async (req, res, next) => {
   try {
     const { name, dateOfBirth, cityId, status, hospitalId } = req.body;

@@ -4,6 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import NavBar from "./components/AppBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
+import HomePage from './components/HomePage';
 
 
 const useStyles = makeStyles({
@@ -22,7 +23,7 @@ function App() {
             <NavBar />
           </Grid>
           <Switch>
-            <Route exact path="\" cpmponent={HomePage}/>
+            <Route exact path="\" component={HomePage}/>
             <Route exact path="\hospitals" />
             <Route exact path="\patients" />
             <Route exact path="\covid-tests" />

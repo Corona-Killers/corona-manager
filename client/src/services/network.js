@@ -28,7 +28,7 @@ return network(`/api/v1/${endpoint}`, "put", updated)
 }
 
 //POST DELETE
-const remove = (endpoint, body) => {
+const remove = (endpoint, body = {}) => {
 return network(`/api/v1/${endpoint}`, "delete", body)
 }
 

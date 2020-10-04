@@ -15,6 +15,7 @@ function Icon(params)
         params.type == 'city' && await read(`cities`).then(r => setInfo(r));
         params.type == 'hospital' && await read(`hospitals`).then(r => setInfo(r));
         params.type == 'test' && await read(`covidTests`).then(r => setInfo(r));
+        
     };
 
     return (<div className={`icon-${params.type}`} onClick={() => {getInfo(); setModal(!modal)}}>{params.type}

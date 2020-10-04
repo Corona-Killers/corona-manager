@@ -27,9 +27,7 @@ function App() {
             <Route exact path="/" component={HomePage}/>
             <Route exact path="/hospitals" component={HospitalPage}/>
             <Route exact path="/patients" component={PatientPage}/>
-            <Route exact path="/covid-tests" />
             <Route exact path="/cities" component={CityPage}/>
-            <Route exact path="/patients" />
             <Route exact path="/covid-tests" component={CovidTestPage}/>
             <Route exact path="/cities" />
           </Switch>

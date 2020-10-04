@@ -36,12 +36,12 @@ export default function NavBar() {
   const items = [
     {
       path: "/",
-      title: "home",
+      title: "Home",
       icon: <HomeIcon />,
     },
     {
       path: "/patients",
-      title: "patients",
+      title: "Patients",
       icon: <PersonIcon />,
     },
     {

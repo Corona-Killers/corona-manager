@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import HospitalPage from './components/HospitalPage';
 import PatientPage from './components/PatientPage';
 import CityPage from './components/CityPage';
+import CovidTestPage from './components/CovidTestPage';
 
 
 const useStyles = makeStyles({
@@ -28,6 +29,9 @@ function App() {
             <Route exact path="/patients" component={PatientPage}/>
             <Route exact path="/covid-tests" />
             <Route exact path="/cities" component={CityPage}/>
+            <Route exact path="/patients" />
+            <Route exact path="/covid-tests" component={CovidTestPage}/>
+            <Route exact path="/cities" />
           </Switch>
         </Grid>
       </Router>

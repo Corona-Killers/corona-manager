@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import HomePage from './components/HomePage';
 import HospitalPage from './components/HospitalPage';
 import PatientPage from './components/PatientPage';
+import CityPage from './components/CityPage';
 
 
 const useStyles = makeStyles({
@@ -26,7 +27,7 @@ function App() {
             <Route exact path="/hospitals" component={HospitalPage}/>
             <Route exact path="/patients" component={PatientPage}/>
             <Route exact path="/covid-tests" />
-            <Route exact path="/cities" />
+            <Route exact path="/cities" component={CityPage}/>
           </Switch>
         </Grid>
       </Router>

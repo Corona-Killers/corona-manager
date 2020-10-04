@@ -1,3 +1,4 @@
+
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import NavBar from "./components/AppBar";
@@ -21,7 +22,7 @@ function App() {
             <NavBar />
           </Grid>
           <Switch>
-            <Route exact path="\"/>
+            <Route exact path="\" cpmponent={HomePage}/>
             <Route exact path="\hospitals" />
             <Route exact path="\patients" />
             <Route exact path="\covid-tests" />

@@ -31,7 +31,6 @@ const singlePatientMock = {
 describe("Patient api tests", () => {
 
   beforeAll(async () => {
-    console.log('process.env.NODE_ENV', process.env.NODE_ENV)
     await Patients.destroy({ truncate: true, force: true });
     await CovidTests.destroy({ truncate: true, force: true });
     await Symptoms.destroy({ truncate: true, force: true });
@@ -79,11 +78,18 @@ describe("Patient api tests", () => {
       expect(body.length).toBe(3);
     });
 
-  it("Can get pateint by id with his city, test result and symptoms", async () => {
+  it("Can get patient by id with his city, test result and symptoms", async () => {
     const { body } = await request(app).get("/api/v1/patients/byId/2").expect(200);
-    console.log(body);
     expect(body.City.name).toBe(citiesMock[0].name);
     expect(body.CovidTests[0].isSick).toBe(false);
+    expect(body.SymptomsByPatients[0].Symptom.name).toBe(symptomMock[0].name);
+  });
+
+  it("Can get patient by name with his city, test result and symptoms", async () => {
+    const { body } = await request(app).get("/api/v1/patients/byName/patient1").expect(200);
+    console.log(body);
+    expect(body.City.name).toBe(citiesMock[1].name);
+    expect(body.CovidTests[0].isSick).toBe(true);
     expect(body.SymptomsByPatients[0].Symptom.name).toBe(symptomMock[0].name);
   });
   

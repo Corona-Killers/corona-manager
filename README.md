@@ -47,6 +47,7 @@ this challenge will test your Back-End skills. you are required to use express.j
 #### GET Methods
 - GET "/api/v1/patients" all patients with their city, symptoms, covid test and status. 
 - GET "/api/v1/patients/byId/:patientId" patient by id with their city, symptoms, covid test and status.
+- GET "/api/v1//byName/:patientName" patient by name with their city, symptoms, covid test and status.
 - GET "/api/v1/patients/positive" all patients with covid Tests that are positive.
 #### POST Methods
 - POST "/api/v1/patients" a new patient with new CovidTests and thier new symptom

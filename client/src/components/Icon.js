@@ -1,5 +1,5 @@
 import React , {useState , useEffect} from 'react';
-import axios from 'axios';
+import { read } from '../services/network';
 import './Icon.css';
 import Modal from "@material-ui/core/Modal";
 import Fade from "@material-ui/core/Fade";
@@ -11,10 +11,10 @@ function Icon(params)
     const [info, setInfo] = useState([]);
 
     const getInfo = async () => {
-        params.type == 'patient' && await axios.get(`http://localhost:8080/api/v1/patients`).then(r => setInfo(r.data));
-        params.type == 'city' && await axios.get(`http://localhost:8080/api/v1/cities`).then(r => setInfo(r.data));
-        params.type == 'hospital' && await axios.get(`http://localhost:8080/api/v1/hospitals`).then(r => setInfo(r.data));
-        params.type == 'test' && await axios.get(`http://localhost:8080/api/v1/covidTests`).then(r => setInfo(r.data));
+        params.type == 'patient' && await read(`patients`).then(r => setInfo(r));
+        params.type == 'city' && await read(`cities`).then(r => setInfo(r));
+        params.type == 'hospital' && await read(`hospitals`).then(r => setInfo(r));
+        params.type == 'test' && await read(`covidTests`).then(r => setInfo(r));
     };
 
     return (<div className={`icon-${params.type}`} onClick={() => {getInfo(); setModal(!modal)}}>{params.type}

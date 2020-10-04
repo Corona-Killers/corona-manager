@@ -14,17 +14,17 @@ function HospitalPage() {
     };
 
     return(<div id='hospital'>
-        this is the hospital page
+        <h2>Select a Hospital:</h2>
         <select onChange={async (e) => {
             let newData = await read(`hospitals/byId/${e.target.value}`).then(r => {setDisplay(r)});
             }}>
             {data.map((e) => <option value={e.id}>{e.name}</option>)}
         </select>
         {display !== 0 && <div>
-            <div>Hospital Name: {display.name}</div>
-            <div>Respirator Amount: {display.respiratorAmount}</div>
-            <div>Maximum Patient Capacity: {display.maxCapacity}</div>
-            <div>Registered Patients:</div>
+            <div className='field'>Hospital Name: <span>{display.name}</span></div>
+            <div className='field'>Respirator Amount: <span>{display.respiratorAmount}</span></div>
+            <div className='field'>Maximum Patient Capacity: <span>{display.maxCapacity}</span></div>
+            <div className='field'>Registered Patients:</div>
             <ul>
             {display.Patients.map((e) => <li>{e.name}</li>)}
             </ul>

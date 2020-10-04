@@ -8,9 +8,6 @@ import HomePage from './components/HomePage';
 
 
 const useStyles = makeStyles({
-  root: {
-    backgroundColor: "green",
-  },
 });
 
 function App() {
@@ -23,11 +20,11 @@ function App() {
             <NavBar />
           </Grid>
           <Switch>
-            <Route exact path="\" component={HomePage}/>
-            <Route exact path="\hospitals" />
-            <Route exact path="\patients" />
-            <Route exact path="\covid-tests" />
-            <Route exact path="\cities" />
+            <Route exact path="/" component={HomePage}/>
+            <Route exact path="/hospitals" />
+            <Route exact path="/patients" />
+            <Route exact path="/covid-tests" />
+            <Route exact path="/cities" />
           </Switch>
         </Grid>
       </Router>

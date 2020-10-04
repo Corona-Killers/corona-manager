@@ -103,6 +103,7 @@ patientRouter.get("/byName/:patientName", async (req, res, next) => {
 });
 
 patientRouter.post("/", async (req, res, next) => {
+  console.log(req.body);
   try {
     const { name, dateOfBirth, cityId, status, hospitalId } = req.body;
     const patient = await Patients.create({

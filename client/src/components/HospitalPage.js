@@ -16,7 +16,7 @@ function HospitalPage() {
     return(<div id='hospital'>
         <h2>Select a Hospital:</h2>
         <select onChange={async (e) => {
-            let newData = await read(`hospitals/byId/${e.target.value}`).then(r => {setDisplay(r)});
+            await read(`hospitals/byId/${e.target.value}`).then(r => {setDisplay(r)});
             }}>
             {data.map((e) => <option value={e.id}>{e.name}</option>)}
         </select>

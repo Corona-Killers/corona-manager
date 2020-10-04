@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import HomePage from './components/HomePage';
 import HospitalPage from './components/HospitalPage';
+import PatientPage from './components/PatientPage';
 
 
 const useStyles = makeStyles({
@@ -23,7 +24,7 @@ function App() {
           <Switch>
             <Route exact path="/" component={HomePage}/>
             <Route exact path="/hospitals" component={HospitalPage}/>
-            <Route exact path="/patients" />
+            <Route exact path="/patients" component={PatientPage}/>
             <Route exact path="/covid-tests" />
             <Route exact path="/cities" />
           </Switch>

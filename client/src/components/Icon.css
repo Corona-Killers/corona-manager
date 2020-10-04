@@ -3,6 +3,7 @@ div {
   }
 
 .icon-city {
+    box-shadow: 2px 2px 10px gray;
     width: 100px;
     height: 100px;
     text-align: center;
@@ -31,6 +32,7 @@ div {
 }
 
 .icon-hospital {
+    box-shadow: 2px 2px 10px gray;
     width: 100px;
     height: 100px;
     text-align: center;
@@ -59,6 +61,7 @@ div {
 }
 
 .icon-patient {
+    box-shadow: 2px 2px 10px gray;
     width: 100px;
     height: 100px;
     text-align: center;
@@ -87,6 +90,7 @@ div {
 }
 
 .icon-test {
+    box-shadow: 2px 2px 10px gray;
     width: 100px;
     height: 100px;
     text-align: center;

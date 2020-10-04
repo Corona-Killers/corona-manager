@@ -3,6 +3,7 @@ body {
 }
 
 #home {
+    margin-top: 70px;
     display: grid;
     padding: 30px;
     align-content: center;

@@ -24,7 +24,7 @@ function PatientPage() {
             <div className='field'>Patient Name: <span>{display.name}</span></div>
             <div className='field'>Date of birth: <span>{display.dateOfBirth}</span></div>
             <div className='field'>City: <span>{display.City.name}</span></div>
-            <div className='field'>Covid Test Result: <span>{display.CovidTests[0].isSick}</span></div>
+            <div className='field'>Covid Test Result: <span>{display.CovidTests[0] && display.CovidTests[0].isSick}</span></div>
             <div className='field'>Symptoms:</div>
             <ul>
             {display.SymptomsByPatients.map((e) => <li>{e.Symptom.name}</li>)}
